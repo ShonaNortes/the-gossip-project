@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #6C9AC3; /* Couleur bleu tendre */
+    }
+
+    .container {
+      width: 60%;
+      margin: auto;
+      text-align: center;
+    }
+
+    .gossip {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
+
+    .gossip h2 {
+      margin-bottom: 10px;
+    }
+
+    .gossip p {
+      margin-bottom: 10px;
+    }
+
+    .gossip li {
+      list-style: none; /* Ajout de cette ligne pour supprimer les puces */
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/gossips">Page d'accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/gossips/new">Nouveau Gossip</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/contact">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/team">Team</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Liste des Gossips</h1>
+    <ul>
+      <% @gossips.each do |gossip| %>
+        <li><strong><%= gossip.author %></strong>: <%= gossip.content %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
