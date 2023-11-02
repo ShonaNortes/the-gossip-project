@@ -1,0 +1,8 @@
+<h1>Profil de <%= @user.username %></h1>
+
+<p><strong>Nom d'utilisateur:</strong> <%= @user.username %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+
+<%= link_to 'Modifier', edit_user_path(@user) %> |
+<%= link_to 'Retour', users_path %>
+

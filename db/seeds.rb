@@ -1,7 +1,7 @@
 # Exemple d'utilisation de Faker pour créer des potins aléatoires
+puts "Potins :"
 5.times do
-    Gossip.create(
-      author: Faker::Name.name,
-      content: Faker::Lorem.sentence
-    )
-  end
+  author = Faker::Name.unique.name
+  gossip = Faker::ChuckNorris.fact
+  puts "#{author} dit : #{gossip}"
+end

@@ -4,14 +4,23 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
-    /* Ajoutez votre style personnalisé ici */
+      h1 {
+      margin-bottom: 30px;
+      color: #add8e6; /* Nouvelle couleur bleu tendre */
+    }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/users/new_signup">S'enregistrer</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/home">Accueil</a>
+      </li>
       <li class="nav-item">
-        <a class="nav-link" href="http://localhost:3000/gossips">Page d'accueil</a>
+        <a class="nav-link" href="http://localhost:3000/gossips">Liste Gossips</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="http://localhost:3000/gossips/new">Nouveau Gossip</a>
@@ -26,14 +35,24 @@
   </nav>
   <div class="container">
     <h1>Poster un Gossip</h1>
-    <form>
-      <label for="name">Nom :</label>
-      <input type="text" id="name" name="name" required><br><br>
-      <label for="gossip">Gossip :</label><br>
-      <textarea id="gossip" name="gossip" rows="4" required></textarea><br><br>
-      <input type="submit" value="Poster le Gossip">
-    </form>
+  <form action="/gossips" method="post">
+  <label for="author">Nom</label><br>
+  <input type="text" id="author" name="gossip[author]"><br>
+  <label for="content">Gossip</label><br>
+  <textarea id="content" name="gossip[content]"></textarea><br><br>
+  <input type="submit" value="Submit">
+  </form>
+   <% if @gossip.errors.any? %>
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+  <% @gossip.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
   </div>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
